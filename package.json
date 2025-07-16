@@ -1,0 +1,26 @@
+{
+  "name": "ejercicio_nodejs_optimizador_de_imagen",
+  "version": "1.0.0",
+  "description": "La mala optimización de imágenes en el desarrollo web puede generar una serie de problemas que afectan\r directamente al rendimiento, afectando a la experiencia de usuario y el consumo de recursos, problemas\r mas a detalle pueden ser los siguientes:",
+  "main": "Index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JuanJosePradaContreras/Ejercicio_NodeJs_Optimizador_de_Imagen.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JuanJosePradaContreras/Ejercicio_NodeJs_Optimizador_de_Imagen/issues"
+  },
+  "homepage": "https://github.com/JuanJosePradaContreras/Ejercicio_NodeJs_Optimizador_de_Imagen#readme",
+  "dependencies": {
+    "chalk": "^5.4.1",
+    "imagemin": "^9.0.1",
+    "inquirer": "^12.7.0",
+    "ora": "^8.2.0"
+  }
+}
