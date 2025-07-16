@@ -86,3 +86,18 @@ npm sharp
 
 ```
 
+## Estructura del Proyecto
+
+```
+
+-EJERCICIO_NODEJS_OPTIMIZADOR_DE_IMAGEN/
+|
+|--images/ ** Carpeta donde iran las imagenes originales **
+|
+|--output/ ** Carpeta donde se guardaran las imagenes comprimidas **
+|
+|--index.js ** Codigo principal **
+|
+|--package.json ** Archivo del proyecto **
+
+```
