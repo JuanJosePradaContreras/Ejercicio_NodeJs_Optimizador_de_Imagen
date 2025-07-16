@@ -92,11 +92,15 @@ npm sharp
 
 -EJERCICIO_NODEJS_OPTIMIZADOR_DE_IMAGEN/
 |
+|--.gitignore ** Para ignorar node_modules **
+|
 |--images/ ** Carpeta donde iran las imagenes originales **
 |
 |--output/ ** Carpeta donde se guardaran las imagenes comprimidas **
 |
 |--index.js ** Codigo principal **
+|
+|--package-lock.json ** Detalles exactos de las versiones de NPM **
 |
 |--package.json ** Archivo del proyecto **
 
