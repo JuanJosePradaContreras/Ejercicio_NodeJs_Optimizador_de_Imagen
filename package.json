@@ -19,7 +19,7 @@
   "homepage": "https://github.com/JuanJosePradaContreras/Ejercicio_NodeJs_Optimizador_de_Imagen#readme",
   "dependencies": {
     "chalk": "^4.1.2",
-    "inquirer": "^12.7.0",
+    "inquirer": "^8.2.6",
     "ora": "^8.2.0",
     "sharp": "^0.34.3"
   }
