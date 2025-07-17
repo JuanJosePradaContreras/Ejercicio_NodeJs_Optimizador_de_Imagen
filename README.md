@@ -105,3 +105,57 @@ npm sharp
 |--package.json ** Archivo del proyecto **
 
 ```
+
+## Ejecuión del programa
+
+**Antes de ejecutar el programa carga la imagen que deseas optimizar en la carpeta images**
+
+### Para correr el proyecto
+
+1. Mediante la consola bash vamos a ejecutar el siguiente codigo
+
+```
+
+node index.js
+
+```
+
+2.  Una vez ejecutado el programa podemos escoger alguna de las dos opciones ya sea: "Optimizar imagen" o "Salir
+
+3. Si damos en la opción "Optimzar imagen" el programa nos pedira que justifiquemos la ruta: Ejemplo
+
+```
+
+? Ingresa la ruta de la imagen a optimizar C:\Users\Rasmm\OneDrive\Escritorio\Ejercicio_NodeJs_Optimizador_de_Imagen\images\Taberna.jpg
+
+```
+
+4. Una vez especificada la ruta de origen de la imagena optimizar el programa procedera a procesarla y ubicarla en la carpeta "output"
+
+5. Por otro lado si la opción que escogemos es "Salir", el programa nos mostrara un mensaje de despedida y finalizara
+
+#### Cosas a tener en cuenta
+
+En la sección de codigo
+
+```
+
+    try{
+        await sharp(rutaOriginal)
+        .resize({ width: 800}) // Redimenciona la imagen a 800px de anchoe
+        .jpeg({ quality: 70}) // Reduce la calidad de imagen al 70% para bajar el peso de esta
+        .toFile(rutaSalida); // Guarda la imagen optimizada
+
+```
+
+en las lineas **resize** y **jpeg** podemos cambiar en el primer caso el width y en el segundo caso cambiar la extensión de la imagen sin ningun problema dependiendo del tipo de imagen que sea requerida, por ejemplo:
+
+```
+
+    try{
+        await sharp(rutaOriginal)
+        .resize({ width: 1200}) // Redimenciona la imagen a 800px de anchoe
+        .webp({ quality: 70}) // Reduce la calidad de imagen al 70% para bajar el peso de esta
+        .toFile(rutaSalida); // Guarda la imagen optimizada
+
+```
