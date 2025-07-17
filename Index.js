@@ -4,20 +4,30 @@ const fs = require("fs")  // Lee y guarda los archivos
 const path = require("path") // Maneja los nombres de los archivos y las rutas
 const inquirer = require("inquirer") // Lo que permite crear el menu interactivo
 const chalk = require("chalk") // Modulo para darle color a los mensajes de consola
-const ora = require("ora") // Muestra un spinner mientras se comprimen las imagenes
+const ora = require("ora").default; // Muestra un spinner mientras se comprimen las imagenes
 const sharp = require("sharp") // Modulo que se encargara de comprimir las imagenes
 const { type } = require("os")
 
 // 2. Funcion empleando sharp para la optimización de imagenes
 
-async function optimizarImagen(inputhPath, outputPath) {
+async function optimizarImagen(rutaOriginal, rutaSalida) {
     const spinner = ora ("Optimizando Imagen ...").start();  // Se muestra una animación mientras trabaja
 
+        
+    if (!fs.existsSync("output")) {
+      fs.mkdirSync("output"); // Verificar si la carpeta output existe, si no, crearla
+    }
+   
+    const extension = path.extname(rutaOriginal); // Obtener nombre base y extensión
+    const nombreBase = path.basename(rutaOriginal, extension);
+
+    const output = path.join("output", `${nombreBase}_opt${extension}`);  // Ruta de salida en carpeta output
+
     try{
-        await sharp(inputhPath)
+        await sharp(rutaOriginal)
         .resize({ width: 800}) // Redimenciona la imagen a 800px de anchoe
         .jpeg({ quality: 70}) // Reduce la calidad de imagen al 70% para bajar el peso de esta
-        .toFile(outputPath); // Guarda la imagen optimizada
+        .toFile(rutaSalida); // Guarda la imagen optimizada
 
         spinner.succeed("Imagen optimizada correctamente"); // Esto detiene el spinner y muestra un mensaje de exito si la imagen se optimizo correctamente
     } catch (error) {
@@ -52,16 +62,18 @@ async function main() {
                 message: "Ingresa la ruta de la imagen a optimizar", // Este es el mensaje que vera el usuario
             },
         ]);
-        if(!ifs.existSync(rutaOriginal)) {
+        if(!fs.existsSync(rutaOriginal)) {
             console.log(chalk.red("La ruta ingresada no existe"));
             return;
         }
 
-        const carpeta = path.dirname(rutaOriginal); // Esta constante con la cual obtenemos la carpeta donde esta ubicada la imagen original
+        const nombre = path.basename(rutaOriginal); // Esta constante con la cual obtenemos la carpeta donde esta ubicada la imagen original
 
-        const nombre = path.basename(rutaOriginal); // Esta constante es con la cual extraeremos el nombre del archivo (por ejemplo: imagen.jpg)
+        const extension = path.extname(nombre); // Esta constante es con la cual extraeremos el nombre del archivo (por ejemplo: imagen.jpg)
 
-        const rutaSalida = path.join(carpeta, "opt-${nombra}"); // Esta constante es con la cual crearemos la ruta donde se guardara la imagen optimizada, usando el prefijo "opt-"
+        const nombreBase = path.basename(nombre, extension);
+
+        const rutaSalida = path.join("output", `${nombreBase}_opt${extension}`); // Esta constante es con la cual crearemos la ruta donde se guardara la imagen optimizada, usando el prefijo "opt-"
 
         await optimizarImagen(rutaOriginal, rutaSalida); // Con esta linea de codigo llamaremos a la función que se encargara de optimizar la imagen y esperamos a que la termine
     } else {
