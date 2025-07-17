@@ -45,7 +45,7 @@ Como librerias secundarias añadir funcionalidades extras a las aplicaciones emp
 
 ```
 
-npm install inquirer
+npm install inquirer@8
 
 ```
 
@@ -53,7 +53,7 @@ npm install inquirer
 
 ```
 
-npm install chalk
+npm install chalk@4
 
 ```
 
